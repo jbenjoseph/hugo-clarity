@@ -4,11 +4,7 @@
 <header class="nav_header" >
   <nav class="nav">
     <a href='{{ absLangURL "" }}' class="nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}">
-      {{- with $logo }}
-      <img src="{{ absURL . }}" class="logo">
-      {{- else }}
-        {{ .Site.Title }}
-      {{- end }}
+      <img src="{{ absURL $logo }}" class="logo">&nbsp;{{ .Site.Title }}
       <div class="nav_close">
         <div>
           {{ partial "sprite" (dict "icon" "open-menu") }}
