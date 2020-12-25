@@ -1,10 +1,36 @@
 {{- $params := .Site.Params }}
 {{- $centerLogo := $params.centerLogo }}
 {{ $logo := $params.logo }}
-<header class="nav_header" >
+<script>
+  var titles = ["𐤆𐤉𐤊𐤓𐤅𐤍𐤅𐤕 𐤌𐤑𐤉𐤅𐤍", "זיכרונות מציון", "Memories of Zion"];
+  var i = 0;
+  var type_speed = 100;
+  var switch_speed = 36000;
+
+  function choose_banner() {
+    var banner = titles[Math.floor(Math.random() * titles.length)];
+    document.getElementById("banner").innerHTML = "";
+    i = 0;
+    type(banner);
+    setTimeout(choose_banner, switch_speed);
+  }
+
+  function type(banner) {
+    if (i < banner.length) {
+      document.getElementById("banner").innerHTML += banner.charAt(i);
+      i++;
+      setTimeout(type, type_speed, banner);
+    }
+  }
+
+  window.addEventListener('load', (event) => {
+    setTimeout(choose_banner, switch_speed);
+  });
+</script>
+<header class="nav_header">
   <nav class="nav">
     <a href='{{ absLangURL "" }}' class="nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}">
-      <img src="{{ absURL $logo }}" class="logo">&nbsp;{{ .Site.Title }}
+      <img src="{{ absURL $logo }}" class="logo">&nbsp;<p id="banner">{{ .Site.Title }}</p>
       <div class="nav_close">
         <div>
           {{ partial "sprite" (dict "icon" "open-menu") }}
@@ -16,9 +42,9 @@
       {{ $context := . }}
       {{ $menuData := .Site.Data.menu }}
       {{ with $menuData }}
-        {{ partial "nav" (dict "context" $context "menu" $menuData) }}
+      {{ partial "nav" (dict "context" $context "menu" $menuData) }}
       {{- else }}
-        {{ partial "nav" (dict "context" . "menu" .Site.Menus.main) }}
+      {{ partial "nav" (dict "context" . "menu" .Site.Menus.main) }}
       {{- end }}
       {{ if .Site.IsMultiLingual }}
       <div class="nav_parent">
