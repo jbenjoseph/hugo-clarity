@@ -52,6 +52,9 @@ introDescription = "Technologist, perpetual student, teacher, continual incremen
 # Google analytics Id
 ga_analytics = "XXXXXXXXXX"
 
+# Baidu analytics Id
+# baidu_analytics = "XXXXXXXX"
+
 # limit the number of taxonomies links shown on the sidebar of each page by default.
 numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
 
@@ -91,6 +94,9 @@ mobileNavigation = "left" # if you prefer right change to 'right'
 
 enforceLightMode = false
 # enforceDarkMode = false
+
+# customize footer icon. see issue https://github.com/chipzoller/hugo-clarity/issues/77
+# footerLogo = "icons/copy.svg"
 
 # Text for the languages menu.
 languageMenuName = "🌐"
