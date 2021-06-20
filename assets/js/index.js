@@ -65,7 +65,7 @@ function fileClosure(){
     const date = new Date();
     const year = date.getFullYear();
     const yearEl = elem('.year');
-    yearEl ? yearEl.innerHTML = ` ${year}` : false;
+    yearEl ? yearEl.innerHTML = `${year}` : false;
   })();
   
   (function makeExternalLinks(){
@@ -267,7 +267,10 @@ function fileClosure(){
         // modify image caption is necessary
         imageAlt = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${imageAlt}` : imageAlt;
         desc.textContent = imageAlt;
-        image.insertAdjacentHTML('afterend', desc.outerHTML);
+        if(!image.matches(".image_featured")) {
+          // add a caption below image only if the image isn't a featured image
+          image.insertAdjacentHTML('afterend', desc.outerHTML);
+        }
       }
       
       if(isInline) {
