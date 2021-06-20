@@ -49,7 +49,7 @@
       {{- end }}
       {{ if .Site.IsMultiLingual }}
       <div class="nav_parent">
-        <a href="#" class="nav_item">{{ .Site.Params.languageMenuName }}</a>
+        <a href="#" class="nav_item">{{ $params.languageMenuName }}</a>
         <div class="nav_sub">
           <span class="nav_child"></span>
           {{ range .Site.Home.AllTranslations }}
@@ -57,14 +57,11 @@
           {{ end }}
         </div>
       </div>
-      {{ end }}
-
-      {{- if eq $centerLogo true }}
-      <a href='{{ absLangURL "" }}' class="nav_brand nav_center nav_item">
-        <img src="{{ absURL $logo }}" class="logo">
-      </a>
       {{- end }}
-      {{- partial "follow" . }}
+      {{- if $centerLogo }}
+      {{- partial "logo" (dict "logo" $logo "class" "nav_center") }}
+      {{- end }}
+      {{- partialCached "follow" . }}
     </div>
   </nav>
 </header>

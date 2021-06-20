@@ -47,4 +47,7 @@ other = "Todos los Tags"
 other = "Todas las Series"
 
 [overview]
-other = "Resumen"
+other = "Contenido"
+
+[reading_time]
+other = "{{ .ReadingTime }} min read"
